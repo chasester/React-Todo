@@ -16,17 +16,28 @@ class Todo extends React.Component
         return(
             <div className='todo-container'>
                 <h1>TO DO LIST</h1>
-                <TodoList todoListItems={this.state.todoItems} />
-                <TodoForm callback={str => this.addItem(str)}/>
+                <TodoList todoListItems={this.state.todoItems} listitemcb={i => this.onclicked(i)} />
+                <TodoForm submitcb={str => this.addItem(str)} clearcb={() => this.clear()}/>
             </div>
         );
+    }
+    onclicked(i)
+    {
+        var arry = this.state.todoItems;
+        arry[i].active = !arry[i].active
+        this.setState({todoItems : arry});
+    }
+    clear()
+    {
+        var arr = this.state.todoItems;
+        arr = 
+        this.setState({todoItems : arr.filter(x=> x.active)});
     }
 
     addItem(str)
     {
-        console.log('helo')
         if(str.split(" ").length === 0) return;
-        this.state.todoItems.push(str);
+        this.state.todoItems.push({name : str, active : true});
         this.setState({todoItems : this.state.todoItems})
     }
 }

@@ -29,15 +29,13 @@ class Todo extends React.Component
     }
     clear()
     {
-        var arr = this.state.todoItems;
-        arr = 
-        this.setState({todoItems : arr.filter(x=> x.active)});
+        this.setState({todoItems : this.state.todoItems.filter(x=> x.active)});
     }
 
     addItem(str)
     {
         if(str.split(" ").length === 0) return;
-        this.state.todoItems.push({name : str, active : true});
+        this.state.todoItems.push({name : str, active : true, id: Date.now()});
         this.setState({todoItems : this.state.todoItems})
     }
 }

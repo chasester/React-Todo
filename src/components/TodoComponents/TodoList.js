@@ -9,14 +9,14 @@ class TodoList extends React.Component
     {
         return(
             <div className='list-container'>
-                {this.props.todoListItems.map((x,i)=> <div className='list-item' key={i} onClick={()=> this.clicked()}>{x}</div>)}
+                {this.props.todoListItems.map((x,i)=> <div className={`list-item ${x.active ? "" : "item-inactive"}`} key={i} onClick={()=> this.clicked(i)}>{x.name}</div>)}
             </div>
         );
     }
 
-    clicked()
+    clicked(i)
     {
-        
+        this.props.listitemcb(i);
     }
 }
 

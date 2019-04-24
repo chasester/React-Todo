@@ -9,7 +9,7 @@ class App extends React.Component {
   render() {
     return (
       <div className='container'>
-        <Todo />
+        <Todo todolist={[{name:"hello", id: Date.now(), active : true}, {name:"World", id : Date.now(), active : true},{name:"Yay", id: Date.now(), active : false}]}/>
       </div>
     );
   }

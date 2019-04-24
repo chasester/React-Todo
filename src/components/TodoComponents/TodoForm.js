@@ -19,14 +19,14 @@ class TodoForm extends React.Component
     }
     
     handleSubmit(event) {
-        this.props.callback(this.state.value);
+        this.props.submitcb(this.state.value);
         event.preventDefault();
         this.setState({value: ''});
     }
     handleReset(event) 
     {
-        console.log("hello");
         this.setState({value: ''});
+        this.props.clearcb();
     }
     render()
     {
@@ -37,7 +37,7 @@ class TodoForm extends React.Component
                     <input type="text" value={this.state.value} onChange={this.handleChange} />
                 </label>
                 <input type="submit" value="Add Todo" />
-                <input type="reset" value="Clear" onClick={()=> this.handleReset()}/> {/* doesnt manually call the reset for some reason?*/}
+                <input type="reset" value="Clear Complete" onClick={()=> this.handleReset()}/> {/* doesnt manually call the reset for some reason?*/}
             </form>
         );
     }
